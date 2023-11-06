@@ -7,18 +7,28 @@ const Button = ({eventHandler,text}) =>
 //Statistics component
 const Statistics = ({good,neutral,bad}) => {
 
+  const total = good+bad+neutral
+
   const average = () =>{ 
-    const total = good+bad+neutral
     if (total === 0)
       return 0
     return (good - bad)/total
   }
 
   const positivePercentage = () => {
-    const total = good+bad+neutral
     if (total === 0)
       return 0
     return good*100/total
+  }
+
+  //Still no feedback
+  if (total === 0){
+    return(
+      <>
+      <h1>Statistics</h1>
+      <p>No feedback given</p>
+      </>
+    )
   }
 
   return(
