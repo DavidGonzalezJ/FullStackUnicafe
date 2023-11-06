@@ -5,8 +5,14 @@ const Button = ({eventHandler,text}) =>
   <button onClick={eventHandler}>{text}</button>
 
 //StatisticLine component
-const  StatisticLine = ({text,value}) =>
-  <li>{text}: {value}</li>
+const  StatisticLine = ({text,value}) => {
+  return(
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
+  )
+}
 
 //Statistics component
 const Statistics = ({good,neutral,bad}) => {
@@ -38,14 +44,16 @@ const Statistics = ({good,neutral,bad}) => {
   return(
     <>
     <h1>Statistics</h1>
-      <ul>
+      <table>
+        <tbody>
         <StatisticLine text={'Good'} value={good} />
         <StatisticLine text={'Neutral'} value={neutral} />
         <StatisticLine text={'Bad'} value={bad} />
         <StatisticLine text={'All'} value={total} />
         <StatisticLine text={'Average'} value={average()} />
         <StatisticLine text={'Positive'} value={positivePercentage()+' %'} />
-      </ul>
+        </tbody>
+      </table>
     </>
   )
 }
